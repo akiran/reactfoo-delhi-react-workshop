@@ -1,5 +1,6 @@
 import React from "react";
 import uuid from "uuid";
+import { Button } from "reactstrap";
 
 export default class AddToCart extends React.Component {
   addToCart = () => {
@@ -10,6 +11,6 @@ export default class AddToCart extends React.Component {
     });
   };
   render() {
-    return <button onClick={this.addToCart}>Add to cart</button>;
+    return <Button onClick={this.addToCart}>Add to cart</Button>;
   }
 }
