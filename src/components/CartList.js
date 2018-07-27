@@ -5,6 +5,9 @@ import { DropdownMenu } from "reactstrap";
 export default class CartList extends React.Component {
   render() {
     const { cartItems, addCartItem, products } = this.props;
+    if (!cartItems.length) {
+      return null;
+    }
     return (
       <DropdownMenu>
         {cartItems.map(cartItem => (
