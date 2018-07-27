@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "react": "^16.4.1",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
