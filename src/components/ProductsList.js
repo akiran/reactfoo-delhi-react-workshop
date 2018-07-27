@@ -4,7 +4,7 @@ import { ListGroup, ListGroupItem } from "reactstrap";
 
 export default class ProductList extends React.Component {
   render() {
-    const { products, addCartItem } = this.props;
+    const { products, addCartItem, cartItems } = this.props;
     return (
       <div>
         <h1>Products</h1>
@@ -14,6 +14,7 @@ export default class ProductList extends React.Component {
               key={product.id}
               product={product}
               addCartItem={addCartItem}
+              disabled={!!cartItems.find(c => c.productId === product.id)}
             />
           ))}
         </ListGroup>

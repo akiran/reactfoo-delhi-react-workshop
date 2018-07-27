@@ -39,7 +39,11 @@ class App extends Component {
         <Container>
           <Row>
             <Col>
-              <ProductList products={products} addCartItem={this.addCartItem} />
+              <ProductList
+                products={products}
+                addCartItem={this.addCartItem}
+                cartItems={cartItems}
+              />
             </Col>
           </Row>
         </Container>

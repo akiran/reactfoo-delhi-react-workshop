@@ -11,6 +11,14 @@ export default class AddToCart extends React.Component {
     });
   };
   render() {
-    return <Button onClick={this.addToCart}>Add to cart</Button>;
+    return (
+      <Button
+        color="primary"
+        onClick={this.addToCart}
+        disabled={this.props.disabled}
+      >
+        Add to cart
+      </Button>
+    );
   }
 }
