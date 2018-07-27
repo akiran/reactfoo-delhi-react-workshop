@@ -1,11 +1,12 @@
 import React from "react";
 import CartItem from "./CartItem";
+import { DropdownMenu } from "reactstrap";
 
 export default class CartList extends React.Component {
   render() {
     const { cartItems, addCartItem, products } = this.props;
     return (
-      <div>
+      <DropdownMenu>
         {cartItems.map(cartItem => (
           <CartItem
             key={cartItem.id}
@@ -14,7 +15,7 @@ export default class CartList extends React.Component {
             addCartItem={addCartItem}
           />
         ))}
-      </div>
+      </DropdownMenu>
     );
   }
 }

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import { Container, Row, Col } from "reactstrap";
 import "./App.css";
 import ProductList from "./components/ProductsList";
 import CartList from "./components/CartList";
+import Header from "./components/Header";
 
 class App extends Component {
   constructor(props) {
@@ -29,16 +30,19 @@ class App extends Component {
     const { products, cartItems } = this.state;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <ProductList products={products} addCartItem={this.addCartItem} />
-        <CartList
+        <Header
           cartItems={cartItems}
-          deleteCartItem={this.deleteCartItem}
           products={products}
+          addCartItem={this.addCartItem}
+          deleteCartItem={this.deleteCartItem}
         />
+        <Container>
+          <Row>
+            <Col>
+              <ProductList products={products} addCartItem={this.addCartItem} />
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }
