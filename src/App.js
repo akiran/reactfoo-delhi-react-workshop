@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
 import "./App.css";
-import ProductList from "./components/ProductsList";
+import ProductListWithBackground from "./components/ProductsList";
 import CartList from "./components/CartList";
 import Header from "./components/Header";
 
@@ -11,19 +11,19 @@ class App extends Component {
     this.state = {
       products: [
         { id: 1, title: "laptop", price: "$1000", description: "" },
-        { id: 2, title: "keyboard", price: "$100", description: "" }
+        { id: 2, title: "keyboard", price: "$100", description: "" },
       ],
-      cartItems: []
+      cartItems: [],
     };
   }
   addCartItem = cartItem => {
     this.setState(prevState => ({
-      cartItems: prevState.cartItems.concat(cartItem)
+      cartItems: prevState.cartItems.concat(cartItem),
     }));
   };
   deleteCartItem = id => {
     this.setState(prevState => ({
-      cartItems: prevState.cartItems.filter(cartItem => cartItem.id !== id)
+      cartItems: prevState.cartItems.filter(cartItem => cartItem.id !== id),
     }));
   };
   render() {
@@ -39,7 +39,7 @@ class App extends Component {
         <Container>
           <Row>
             <Col>
-              <ProductList
+              <ProductListWithBackground
                 products={products}
                 addCartItem={this.addCartItem}
                 cartItems={cartItems}

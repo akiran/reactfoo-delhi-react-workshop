@@ -1,8 +1,9 @@
 import React from "react";
-import ProductItem from "./ProductItem";
+import Product from "./ProductItem";
 import { ListGroup, ListGroupItem } from "reactstrap";
+import withBackground from "../utils/commonBackground";
 
-export default class ProductList extends React.Component {
+class ProductList extends React.Component {
   render() {
     const { products, addCartItem, cartItems } = this.props;
     return (
@@ -10,7 +11,7 @@ export default class ProductList extends React.Component {
         <h1>Products</h1>
         <ListGroup>
           {products.map(product => (
-            <ProductItem
+            <Product
               key={product.id}
               product={product}
               addCartItem={addCartItem}
@@ -22,3 +23,7 @@ export default class ProductList extends React.Component {
     );
   }
 }
+
+const ProductListWithBackground = withBackground("yellow")(ProductList);
+
+export default ProductListWithBackground;
