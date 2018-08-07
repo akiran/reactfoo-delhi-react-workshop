@@ -4,30 +4,29 @@ import "./App.css";
 import ProductList from "./components/ProductsList";
 import CartList from "./components/CartList";
 import Header from "./components/Header";
+import withData from "./utils/getData";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [
-        { id: 1, title: "laptop", price: "$1000", description: "" },
-        { id: 2, title: "keyboard", price: "$100", description: "" }
-      ],
-      cartItems: []
+      cartItems: [],
     };
   }
   addCartItem = cartItem => {
     this.setState(prevState => ({
-      cartItems: prevState.cartItems.concat(cartItem)
+      cartItems: prevState.cartItems.concat(cartItem),
     }));
   };
   deleteCartItem = id => {
     this.setState(prevState => ({
-      cartItems: prevState.cartItems.filter(cartItem => cartItem.id !== id)
+      cartItems: prevState.cartItems.filter(cartItem => cartItem.id !== id),
     }));
   };
   render() {
-    const { products, cartItems } = this.state;
+    const { cartItems } = this.state;
+    const { products } = this.props;
+
     return (
       <div className="App">
         <Header
@@ -52,4 +51,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export const AppWithData = withData("products")(App);
