@@ -17,7 +17,7 @@ export default class CartList extends React.Component {
             cartItem={cartItem}
             addCartItem={addCartItem}
           />
-        ))
+        ))}
       </DropdownMenu>
     );
   }
