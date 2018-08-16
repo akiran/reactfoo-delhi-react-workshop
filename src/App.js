@@ -12,7 +12,12 @@ class App extends Component {
         { id: 1, title: "laptop", price: "$1000", description: "" },
         { id: 2, title: "keyboard", price: "$100", description: "" }
       ],
-      cartItems: []
+      cartItems: [],
+      user: {
+        firstName: "",
+        lastName: "",
+        email: ""
+      }
     };
   }
   setRoute = route => {
@@ -28,8 +33,11 @@ class App extends Component {
       cartItems: prevState.cartItems.filter(cartItem => cartItem.id !== id)
     }));
   };
+  setUser = user => {
+    this.setState({ user });
+  };
   render() {
-    const { products, cartItems, route } = this.state;
+    const { products, cartItems, route, user } = this.state;
     return (
       <div className="App">
         <Header cartItems={cartItems} setRoute={this.setRoute} />
@@ -37,8 +45,10 @@ class App extends Component {
           route={route}
           products={products}
           cartItems={cartItems}
+          user={user}
           addCartItem={this.addCartItem}
           deleteCartItem={this.deleteCartItem}
+          setUser={this.setUser}
         />
       </div>
     );

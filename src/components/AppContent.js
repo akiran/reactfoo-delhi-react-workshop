@@ -4,7 +4,15 @@ import ProductList from "./ProductsList";
 import CartList from "./CartList";
 import Profile from "./Profile";
 
-function Routes({ route, products, cartItems, addCartItem, deleteCartItem }) {
+function Routes({
+  route,
+  products,
+  cartItems,
+  user,
+  addCartItem,
+  deleteCartItem,
+  setUser
+}) {
   switch (route) {
     case "Cart":
       return (
@@ -15,7 +23,7 @@ function Routes({ route, products, cartItems, addCartItem, deleteCartItem }) {
         />
       );
     case "Profile":
-      return <Profile />;
+      return <Profile user={user} setUser={setUser} />;
     default:
       return (
         <ProductList

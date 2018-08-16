@@ -1,5 +1,5 @@
 import React from "react";
-import { ListGroupItem } from "reactstrap";
+import { ListGroupItem, Row, Col } from "reactstrap";
 import deleteIcon from "../img/trash-o.svg";
 
 export default class CartItem extends React.Component {
@@ -8,12 +8,16 @@ export default class CartItem extends React.Component {
     const product = products.find(p => p.id === cartItem.productId);
     return (
       <ListGroupItem>
-        {product.title}{" "}
-        <img
-          onClick={() => deleteCartItem(cartItem.id)}
-          src={deleteIcon}
-          alt="delete"
-        />
+        <Row>
+          <Col sm={10}>{product.title}</Col>
+          <Col sm={2}>
+            <img
+              onClick={() => deleteCartItem(cartItem.id)}
+              src={deleteIcon}
+              alt="delete"
+            />
+          </Col>
+        </Row>
       </ListGroupItem>
     );
   }
