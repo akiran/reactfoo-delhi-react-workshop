@@ -1,27 +1,30 @@
 import React from "react";
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Badge } from "reactstrap";
 import logo from "../logo.svg";
-
+import { Link } from "react-router-dom";
 export default class Header extends React.Component {
   render() {
     const { cartItems } = this.props;
     return (
       <div>
         <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="#" onClick={() => this.props.setRoute("")}>
-            <img style={{ height: "48px" }} src={logo} alt="logo" /> React Store
+          <NavbarBrand>
+            <Link className="navbar-brand" to="/">
+              <img style={{ height: "48px" }} src={logo} alt="logo" /> React
+              Store
+            </Link>
           </NavbarBrand>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink onClick={() => this.props.setRoute("Profile")}>
+              <Link className="nav-link" to="/profile">
                 Profile
-              </NavLink>
+              </Link>
             </NavItem>
             <NavItem>
-              <NavLink onClick={() => this.props.setRoute("Cart")}>
+              <Link className="nav-link" to="/cart">
                 Cart{" "}
                 {cartItems.length ? <Badge>{cartItems.length}</Badge> : null}
-              </NavLink>
+              </Link>
             </NavItem>
           </Nav>
         </Navbar>

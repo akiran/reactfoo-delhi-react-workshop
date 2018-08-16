@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import AppContent from "./components/AppContent";
+import { BrowserRouter } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -39,18 +40,20 @@ class App extends Component {
   render() {
     const { products, cartItems, route, user } = this.state;
     return (
-      <div className="App">
-        <Header cartItems={cartItems} setRoute={this.setRoute} />
-        <AppContent
-          route={route}
-          products={products}
-          cartItems={cartItems}
-          user={user}
-          addCartItem={this.addCartItem}
-          deleteCartItem={this.deleteCartItem}
-          setUser={this.setUser}
-        />
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Header cartItems={cartItems} setRoute={this.setRoute} />
+          <AppContent
+            route={route}
+            products={products}
+            cartItems={cartItems}
+            user={user}
+            addCartItem={this.addCartItem}
+            deleteCartItem={this.deleteCartItem}
+            setUser={this.setUser}
+          />
+        </div>
+      </BrowserRouter>
     );
   }
 }

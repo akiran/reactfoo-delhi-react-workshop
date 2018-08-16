@@ -3,6 +3,7 @@ import { Container, Row, Col } from "reactstrap";
 import ProductList from "./ProductsList";
 import CartList from "./CartList";
 import Profile from "./Profile";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function Routes({
   route,
@@ -13,26 +14,37 @@ function Routes({
   deleteCartItem,
   setUser
 }) {
-  switch (route) {
-    case "Cart":
-      return (
-        <CartList
-          cartItems={cartItems}
-          products={products}
-          deleteCartItem={deleteCartItem}
-        />
-      );
-    case "Profile":
-      return <Profile user={user} setUser={setUser} />;
-    default:
-      return (
-        <ProductList
-          products={products}
-          cartItems={cartItems}
-          addCartItem={addCartItem}
-        />
-      );
-  }
+  return (
+    <Switch>
+      <Route
+        path="/"
+        exact
+        render={props => (
+          <ProductList
+            {...props}
+            cartItems={cartItems}
+            products={products}
+            addCartItem={addCartItem}
+          />
+        )}
+      />
+      <Route
+        path="/cart"
+        render={props => (
+          <CartList
+            {...props}
+            cartItems={cartItems}
+            products={products}
+            deleteCartItem={deleteCartItem}
+          />
+        )}
+      />
+      <Route
+        path="/profile"
+        render={props => <Profile {...props} user={user} setUser={setUser} />}
+      />
+    </Switch>
+  );
 }
 
 export default class AppContent extends React.Component {
