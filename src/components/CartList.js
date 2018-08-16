@@ -1,24 +1,27 @@
 import React from "react";
 import CartItem from "./CartItem";
-import { DropdownMenu } from "reactstrap";
-
+import { ListGroup } from "reactstrap";
 export default class CartList extends React.Component {
   render() {
     const { cartItems, addCartItem, products } = this.props;
-    if (!cartItems.length) {
-      return null;
-    }
     return (
-      <DropdownMenu>
-        {cartItems.map(cartItem => (
-          <CartItem
-            key={cartItem.id}
-            products={products}
-            cartItem={cartItem}
-            addCartItem={addCartItem}
-          />
-        ))}
-      </DropdownMenu>
+      <div>
+        <h1>Cart</h1>
+        <ListGroup>
+          {cartItems.length ? (
+            cartItems.map(cartItem => (
+              <CartItem
+                key={cartItem.id}
+                products={products}
+                cartItem={cartItem}
+                addCartItem={addCartItem}
+              />
+            ))
+          ) : (
+            <div>Cart is empty</div>
+          )}
+        </ListGroup>
+      </div>
     );
   }
 }

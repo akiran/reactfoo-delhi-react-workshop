@@ -1,6 +1,6 @@
 import React from "react";
 import ProductItem from "./ProductItem";
-import { ListGroup, ListGroupItem } from "reactstrap";
+import { ListGroup } from "reactstrap";
 
 export default class ProductList extends React.Component {
   render() {

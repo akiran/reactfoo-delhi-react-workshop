@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "reactstrap";
 import "./App.css";
-import ProductList from "./components/ProductsList";
-import CartList from "./components/CartList";
 import Header from "./components/Header";
+import AppContent from "./components/AppContent";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      route: "",
       products: [
         { id: 1, title: "laptop", price: "$1000", description: "" },
         { id: 2, title: "keyboard", price: "$100", description: "" }
@@ -16,6 +15,9 @@ class App extends Component {
       cartItems: []
     };
   }
+  setRoute = route => {
+    this.setState({ route });
+  };
   addCartItem = cartItem => {
     this.setState(prevState => ({
       cartItems: prevState.cartItems.concat(cartItem)
@@ -27,26 +29,17 @@ class App extends Component {
     }));
   };
   render() {
-    const { products, cartItems } = this.state;
+    const { products, cartItems, route } = this.state;
     return (
       <div className="App">
-        <Header
-          cartItems={cartItems}
+        <Header cartItems={cartItems} setRoute={this.setRoute} />
+        <AppContent
+          route={route}
           products={products}
+          cartItems={cartItems}
           addCartItem={this.addCartItem}
           deleteCartItem={this.deleteCartItem}
         />
-        <Container>
-          <Row>
-            <Col>
-              <ProductList
-                products={products}
-                addCartItem={this.addCartItem}
-                cartItems={cartItems}
-              />
-            </Col>
-          </Row>
-        </Container>
       </div>
     );
   }
