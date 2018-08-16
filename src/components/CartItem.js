@@ -1,8 +1,10 @@
 import React from "react";
 import { ListGroupItem, Row, Col } from "reactstrap";
 import deleteIcon from "../img/trash-o.svg";
+import { connect } from "react-redux";
+import { deleteCartItem } from "../actions";
 
-export default class CartItem extends React.Component {
+class CartItem extends React.Component {
   render() {
     const { cartItem, products, deleteCartItem } = this.props;
     const product = products.find(p => p.id === cartItem.productId);
@@ -22,3 +24,8 @@ export default class CartItem extends React.Component {
     );
   }
 }
+
+export default connect(
+  null,
+  { deleteCartItem }
+)(CartItem);

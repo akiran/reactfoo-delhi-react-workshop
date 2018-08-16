@@ -3,49 +3,7 @@ import { Container, Row, Col } from "reactstrap";
 import ProductList from "./ProductsList";
 import CartList from "./CartList";
 import Profile from "./Profile";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-
-function Routes({
-  route,
-  products,
-  cartItems,
-  user,
-  addCartItem,
-  deleteCartItem,
-  setUser
-}) {
-  return (
-    <Switch>
-      <Route
-        path="/"
-        exact
-        render={props => (
-          <ProductList
-            {...props}
-            cartItems={cartItems}
-            products={products}
-            addCartItem={addCartItem}
-          />
-        )}
-      />
-      <Route
-        path="/cart"
-        render={props => (
-          <CartList
-            {...props}
-            cartItems={cartItems}
-            products={products}
-            deleteCartItem={deleteCartItem}
-          />
-        )}
-      />
-      <Route
-        path="/profile"
-        render={props => <Profile {...props} user={user} setUser={setUser} />}
-      />
-    </Switch>
-  );
-}
+import { Switch, Route } from "react-router-dom";
 
 export default class AppContent extends React.Component {
   render() {
@@ -53,7 +11,11 @@ export default class AppContent extends React.Component {
       <Container>
         <Row>
           <Col>
-            <Routes {...this.props} />
+            <Switch>
+              <Route path="/" exact component={ProductList} />
+              <Route path="/cart" component={CartList} />
+              <Route path="/profile" component={Profile} />
+            </Switch>
           </Col>
         </Row>
       </Container>

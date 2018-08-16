@@ -4,8 +4,7 @@ import { ListGroupItem, Row, Col } from "reactstrap";
 
 export default class Product extends React.Component {
   render() {
-    const { product, addCartItem, disabled } = this.props;
-    console.log(disabled);
+    const { product, disabled } = this.props;
     return (
       <ListGroupItem>
         <Row>
@@ -13,11 +12,7 @@ export default class Product extends React.Component {
           <Col>{product.description}</Col>
           <Col>{product.price}</Col>
           <Col>
-            <AddToCart
-              productId={product.id}
-              addCartItem={addCartItem}
-              disabled={disabled}
-            />
+            <AddToCart productId={product.id} disabled={disabled} />
           </Col>
         </Row>
       </ListGroupItem>

@@ -1,9 +1,11 @@
 import React from "react";
 import CartItem from "./CartItem";
 import { ListGroup } from "reactstrap";
-export default class CartList extends React.Component {
+import { connect } from "react-redux";
+
+class CartList extends React.Component {
   render() {
-    const { cartItems, deleteCartItem, products } = this.props;
+    const { cartItems, products } = this.props;
     return (
       <div>
         <h1>Cart</h1>
@@ -14,7 +16,6 @@ export default class CartList extends React.Component {
                 key={cartItem.id}
                 products={products}
                 cartItem={cartItem}
-                deleteCartItem={deleteCartItem}
               />
             ))
           ) : (
@@ -25,3 +26,8 @@ export default class CartList extends React.Component {
     );
   }
 }
+
+export default connect(state => ({
+  products: state.products,
+  cartItems: state.cartItems
+}))(CartList);

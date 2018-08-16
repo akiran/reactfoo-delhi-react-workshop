@@ -1,8 +1,10 @@
 import React from "react";
 import uuid from "uuid";
 import { Button } from "reactstrap";
+import { connect } from "react-redux";
+import { addCartItem } from "../actions";
 
-export default class AddToCart extends React.Component {
+class AddToCart extends React.Component {
   addToCart = () => {
     const { productId, addCartItem } = this.props;
     addCartItem({
@@ -22,3 +24,8 @@ export default class AddToCart extends React.Component {
     );
   }
 }
+
+export default connect(
+  null,
+  { addCartItem }
+)(AddToCart);

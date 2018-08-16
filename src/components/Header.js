@@ -2,7 +2,9 @@ import React from "react";
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Badge } from "reactstrap";
 import logo from "../logo.svg";
 import { Link } from "react-router-dom";
-export default class Header extends React.Component {
+import { connect } from "react-redux";
+
+class Header extends React.Component {
   render() {
     const { cartItems } = this.props;
     return (
@@ -32,3 +34,10 @@ export default class Header extends React.Component {
     );
   }
 }
+
+const mapStateToProps = function(state) {
+  return {
+    cartItems: state.cartItems
+  };
+};
+export default connect(mapStateToProps)(Header);

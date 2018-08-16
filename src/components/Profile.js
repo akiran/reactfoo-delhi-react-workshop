@@ -1,7 +1,9 @@
 import React from "react";
 import { Button, Form, Col, FormGroup, Label, Input } from "reactstrap";
+import { connect } from "react-redux";
+import { setUser } from "../actions";
 
-export default class Profile extends React.Component {
+class Profile extends React.Component {
   changeHandler = e => {
     this.props.setUser({
       ...this.props.user,
@@ -41,7 +43,7 @@ export default class Profile extends React.Component {
                 type="text"
                 name="lastName"
                 id="lastName"
-                placeholder="last name"
+                placeholder="Last name"
                 value={user.lastName}
                 onChange={this.changeHandler}
               />
@@ -56,7 +58,7 @@ export default class Profile extends React.Component {
                 type="email"
                 name="email"
                 id="email"
-                placeholder="last name"
+                placeholder="E-mail"
                 value={user.email}
                 onChange={this.changeHandler}
               />
@@ -68,3 +70,10 @@ export default class Profile extends React.Component {
     );
   }
 }
+
+export default connect(
+  state => ({
+    user: state.user
+  }),
+  { setUser }
+)(Profile);
