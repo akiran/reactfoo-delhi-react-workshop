@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Badge } from "reactstrap";
+import { Navbar, Nav, NavItem, Badge } from "reactstrap";
 import logo from "../logo.svg";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -10,12 +10,9 @@ class Header extends React.Component {
     return (
       <div>
         <Navbar color="dark" dark expand="md">
-          <NavbarBrand>
-            <Link className="navbar-brand" to="/">
-              <img style={{ height: "48px" }} src={logo} alt="logo" /> React
-              Store
-            </Link>
-          </NavbarBrand>
+          <Link className="navbar-brand" to="/">
+            <img style={{ height: "48px" }} src={logo} alt="logo" /> React Store
+          </Link>
           <Nav className="ml-auto" navbar>
             <NavItem>
               <Link className="nav-link" to="/profile">
