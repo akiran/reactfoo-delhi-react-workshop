@@ -3,6 +3,8 @@ import "./App.css";
 import Header from "./components/Header";
 import AppContent from "./components/AppContent";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import configureStore from "./store";
 
 class App extends Component {
   constructor(props) {
@@ -40,20 +42,22 @@ class App extends Component {
   render() {
     const { products, cartItems, route, user } = this.state;
     return (
-      <BrowserRouter>
-        <div className="App">
-          <Header cartItems={cartItems} setRoute={this.setRoute} />
-          <AppContent
-            route={route}
-            products={products}
-            cartItems={cartItems}
-            user={user}
-            addCartItem={this.addCartItem}
-            deleteCartItem={this.deleteCartItem}
-            setUser={this.setUser}
-          />
-        </div>
-      </BrowserRouter>
+      <Provider store={configureStore()}>
+        <BrowserRouter>
+          <div className="App">
+            <Header cartItems={cartItems} setRoute={this.setRoute} />
+            <AppContent
+              route={route}
+              products={products}
+              cartItems={cartItems}
+              user={user}
+              addCartItem={this.addCartItem}
+              deleteCartItem={this.deleteCartItem}
+              setUser={this.setUser}
+            />
+          </div>
+        </BrowserRouter>
+      </Provider>
     );
   }
 }
