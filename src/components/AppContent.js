@@ -3,12 +3,24 @@ import { Container, Row, Col } from "reactstrap";
 import ProductList from "./ProductsList";
 import CartList from "./CartList";
 
-function Routes(props) {
-  switch (props.route) {
+function Routes({ route, products, cartItems, addCartItem, deleteCartItem }) {
+  switch (route) {
     case "Cart":
-      return <CartList {...props} />;
+      return (
+        <CartList
+          cartItems={cartItems}
+          products={products}
+          deleteCartItem={deleteCartItem}
+        />
+      );
     default:
-      return <ProductList {...props} />;
+      return (
+        <ProductList
+          products={products}
+          cartItems={cartItems}
+          addCartItem={addCartItem}
+        />
+      );
   }
 }
 

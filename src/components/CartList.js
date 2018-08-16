@@ -3,7 +3,7 @@ import CartItem from "./CartItem";
 import { ListGroup } from "reactstrap";
 export default class CartList extends React.Component {
   render() {
-    const { cartItems, addCartItem, products } = this.props;
+    const { cartItems, deleteCartItem, products } = this.props;
     return (
       <div>
         <h1>Cart</h1>
@@ -14,7 +14,7 @@ export default class CartList extends React.Component {
                 key={cartItem.id}
                 products={products}
                 cartItem={cartItem}
-                addCartItem={addCartItem}
+                deleteCartItem={deleteCartItem}
               />
             ))
           ) : (
