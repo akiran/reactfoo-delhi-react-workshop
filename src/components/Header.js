@@ -13,6 +13,11 @@ export default class Header extends React.Component {
           </NavbarBrand>
           <Nav className="ml-auto" navbar>
             <NavItem>
+              <NavLink onClick={() => this.props.setRoute("Profile")}>
+                Profile
+              </NavLink>
+            </NavItem>
+            <NavItem>
               <NavLink onClick={() => this.props.setRoute("Cart")}>
                 Cart{" "}
                 {cartItems.length ? <Badge>{cartItems.length}</Badge> : null}

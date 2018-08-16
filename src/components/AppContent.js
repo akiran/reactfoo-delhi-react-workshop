@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import ProductList from "./ProductsList";
 import CartList from "./CartList";
+import Profile from "./Profile";
 
 function Routes({ route, products, cartItems, addCartItem, deleteCartItem }) {
   switch (route) {
@@ -13,6 +14,8 @@ function Routes({ route, products, cartItems, addCartItem, deleteCartItem }) {
           deleteCartItem={deleteCartItem}
         />
       );
+    case "Profile":
+      return <Profile />;
     default:
       return (
         <ProductList
