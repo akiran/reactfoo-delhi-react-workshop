@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import AppContent from "./components/AppContent";
+import { ProductsContext, CartItemsContext, UserContext } from "./context";
 
 class App extends Component {
   constructor(props) {
@@ -37,20 +38,26 @@ class App extends Component {
     this.setState({ user });
   };
   render() {
-    const { products, cartItems, route, user } = this.state;
+    const { route } = this.state;
     return (
-      <div className="App">
-        <Header cartItems={cartItems} setRoute={this.setRoute} />
-        <AppContent
-          route={route}
-          products={products}
-          cartItems={cartItems}
-          user={user}
-          addCartItem={this.addCartItem}
-          deleteCartItem={this.deleteCartItem}
-          setUser={this.setUser}
-        />
-      </div>
+      <ProductsContext.Provider value={{ products: this.state.products }}>
+        <CartItemsContext.Provider
+          value={{
+            cartItems: this.state.cartItems,
+            addCartItem: this.addCartItem,
+            deleteCartItem: this.deleteCartItem
+          }}
+        >
+          <UserContext.Provider
+            value={{ user: this.state.user, setUser: this.setUser }}
+          >
+            <div className="App">
+              <Header setRoute={this.setRoute} />
+              <AppContent route={route} />
+            </div>
+          </UserContext.Provider>
+        </CartItemsContext.Provider>
+      </ProductsContext.Provider>
     );
   }
 }

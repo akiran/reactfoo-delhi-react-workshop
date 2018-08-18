@@ -4,34 +4,14 @@ import ProductList from "./ProductsList";
 import CartList from "./CartList";
 import Profile from "./Profile";
 
-function Routes({
-  route,
-  products,
-  cartItems,
-  user,
-  addCartItem,
-  deleteCartItem,
-  setUser
-}) {
+function Routes({ route }) {
   switch (route) {
     case "Cart":
-      return (
-        <CartList
-          cartItems={cartItems}
-          products={products}
-          deleteCartItem={deleteCartItem}
-        />
-      );
+      return <CartList />;
     case "Profile":
-      return <Profile user={user} setUser={setUser} />;
+      return <Profile />;
     default:
-      return (
-        <ProductList
-          products={products}
-          cartItems={cartItems}
-          addCartItem={addCartItem}
-        />
-      );
+      return <ProductList />;
   }
 }
 

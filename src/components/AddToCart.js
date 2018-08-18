@@ -1,24 +1,27 @@
 import React from "react";
 import uuid from "uuid";
 import { Button } from "reactstrap";
+import { CartItemsContext } from "../context";
 
 export default class AddToCart extends React.Component {
-  addToCart = () => {
-    const { productId, addCartItem } = this.props;
-    addCartItem({
-      id: uuid.v4(),
-      productId
-    });
-  };
   render() {
     return (
-      <Button
-        color="primary"
-        onClick={this.addToCart}
-        disabled={this.props.disabled}
-      >
-        Add to cart
-      </Button>
+      <CartItemsContext.Consumer>
+        {({ addCartItem }) => (
+          <Button
+            color="primary"
+            onClick={() =>
+              addCartItem({
+                id: uuid.v4(),
+                productId: this.props.productId
+              })
+            }
+            disabled={this.props.disabled}
+          >
+            Add to cart
+          </Button>
+        )}
+      </CartItemsContext.Consumer>
     );
   }
 }
